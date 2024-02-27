@@ -1,0 +1,102 @@
+﻿@model IEnumerable<EventEntities.Event>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section EventAdd {
+    <script src="~/js/Addanewevent.js" defer></script>
+}
+
+@if (ViewData["Error"] != null)   //delete action may pass value to here
+{
+    <script>
+        // Display an alert with the error message
+        alert('@ViewData["Error"]');
+    </script>
+}
+<h1>Event list</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Index
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventLocation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 0;
+        }
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @{
+                    index++;
+                }
+                @index
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventLocation)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", "Home", new { id = item.EventID }) |
+                    @Html.ActionLink("Delete", "Delete", "Home", new { id = item.EventID }) |
+                    @Html.ActionLink("Manage Particepants", "Index", "Registrations", new { eventID = item.EventID, eventName = item.EventName })
+            </td>
+        </tr>
+}
+@* Add a new event *@
+        @using (Html.BeginForm("AddANewEvent", "Home", FormMethod.Post, new { id = "FormAddANewEvent" }))
+        {
+            <tr>
+                <td>New Event</td>
+                <td>
+                    <input type="text" name="newEventName" id="txtNewEventName">
+                </td>
+                <td>
+                    <input type="datetime-local" name="newEventDate" id="txtEventDate">
+                </td>
+                <td>
+                    <input type="text" name="newEventLocation" id="txtEventLocation">
+                </td>
+                <td>
+                    <button id="btnAddANewParticipant" type="submit">Add</button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@if (TempData.ContainsKey("isDeleteSuccessful") && (bool)TempData["isDeleteSuccessful"])
+{
+    <script>
+        alert('Deleted successful!');
+    </script>
+}
+
+
+@if (TempData.ContainsKey("isAddFailed") && (bool)TempData["isAddFailed"])
+{
+    <script>
+        alert('Add a new event failed!');
+    </script>
+}

@@ -1,0 +1,10 @@
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\bin\Debug\EventRepositaries.dll
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\bin\Debug\EventRepositaries.pdb
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\bin\Debug\EventEntities.dll
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\bin\Debug\EventEntities.pdb
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\obj\Debug\EventRepositaries.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\obj\Debug\EventRepositaries.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\obj\Debug\EventRep.BBC7C635.Up2Date
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\obj\Debug\EventRepositaries.dll
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\obj\Debug\EventRepositaries.pdb
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventRepositaries\bin\Debug\EventRepositaries.dll.config

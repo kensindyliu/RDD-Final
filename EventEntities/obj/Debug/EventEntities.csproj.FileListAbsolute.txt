@@ -1,0 +1,6 @@
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\bin\Debug\EventEntities.dll
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\bin\Debug\EventEntities.pdb
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\obj\Debug\EventEntities.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\obj\Debug\EventEntities.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\obj\Debug\EventEntities.dll
+C:\Users\Administrator\source\repos\EventsManagerWebApp\EventEntities\obj\Debug\EventEntities.pdb

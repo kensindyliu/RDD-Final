@@ -1,0 +1,23 @@
+.field {
+    display: flex;
+    margin: 10px;
+}
+
+.flexEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#lblNewEventName, #lblNewEventDate, #lblNewEventLocation {
+    color:red;
+}
+
+.columnStyle {
+    width: 110px;
+    text-align: end;
+}
+
+.textbox {
+    width: 250px;
+    margin: 0 10px;
+}

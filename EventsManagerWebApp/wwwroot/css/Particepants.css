@@ -1,0 +1,15 @@
+.invisable {
+    display:none;
+}
+
+.eventName {
+    color: blue;
+}
+
+.actionWidth {
+    width: 150px;
+}
+
+.btnSave {
+    display:none;
+}

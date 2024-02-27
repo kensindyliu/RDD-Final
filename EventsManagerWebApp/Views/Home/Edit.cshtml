@@ -1,0 +1,78 @@
+﻿@model EventEntities.Event
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
+</head>
+@section EventEdit {
+    <script src="~/js/edit.js" defer></script>
+}
+<h1>Edit</h1>
+
+<h4>Event</h4>
+<hr />
+<div>
+    <div>
+        <form asp-controller="Home" asp-action="Update" method="post" id="EditForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden fields for original values -->  
+            <input type="hidden" name="EventID" value="@(Model.EventID)" />
+            <input type="hidden" name="EventName" value="@(Model.EventName)" />
+            <input type="hidden" name="EventDate" value="@(Model.EventDate.ToString("yyyy-MM-ddTHH:mm"))" />
+            <input type="hidden" name="EventLocation" value="@(Model.EventLocation)" />
+
+            <div class="field">
+                <!--form-group-->
+                <label asp-for="EventName" class="columnStyle">EventName:</label>
+                <input asp-for="EventName" name="newEventName" class="textbox" />
+                <label id="lblNewEventName">*</label>
+                <span asp-validation-for="EventName" class="text-danger"></span>
+            </div>
+            <div class="field">
+                
+                <label asp-for="EventDate" class="columnStyle">EventDate:</label>
+                <input asp-for="EventDate" name="newEventDate" class="textbox" />
+                <label id="lblNewEventDate">*</label>
+                <span asp-validation-for="EventDate" class="text-danger"></span>
+            </div>
+            <div class="field">
+                <label asp-for="EventLocation" class="columnStyle">EventLocation:</label>
+                <input asp-for="EventLocation" name="newEventLocation" class="textbox" />
+                <label id="lblNewEventLocation">*</label>
+                <span asp-validation-for="EventLocation" class="text-danger"></span>
+            </div>
+            <div class="flexEnd">
+                <input type="submit" value="Save" id="save" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@if (TempData.ContainsKey("isUpdateSuccessful") && (bool)TempData["isUpdateSuccessful"])
+{
+    <script>
+        alert('Updated successfully!');
+    </script>
+}
+else if (TempData.ContainsKey("Error"))
+{
+    <script>
+        alert('@TempData["Error"]');
+    </script>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

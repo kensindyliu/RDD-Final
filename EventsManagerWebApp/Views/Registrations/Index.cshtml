@@ -1,0 +1,117 @@
+﻿@model IEnumerable<EventEntities.EventRegistration>
+
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section RegistrationManage {
+    <script src="~/js/registrationEdit.js" defer></script>
+}
+
+<h1>
+    Participants of
+    @if (TempData.ContainsKey("EventName"))
+    {
+        <span class="eventName">Event @TempData["EventName"]</span>
+    }
+    else
+    {
+        <span class="eventName">No Event Available</span>
+    }
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Index
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th class="actionWidth"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 0;
+        }
+@foreach (var item in Model) {
+    @using (Html.BeginForm("Edit", "Registrations", FormMethod.Post, new { id = "Form" + item.RegistrationID }))
+    {
+        <tr>
+            <td>
+                        @{
+                            index++;
+                        }
+                @index
+            </td>
+            <td>
+                <input type="hidden" name="RegistrationID" value="@item.RegistrationID">
+                <input type="hidden" name="EventID" value="@item.EventID">
+                <label id="lblParticipantName@(item.RegistrationID)">@item.ParticipantName</label>
+                <input type="text" name="ParticipantName" id="txtParticipantName@(item.RegistrationID)" value="@item.ParticipantName" class="invisible">
+            </td>
+            <td>
+                <label id="lblParticipantEmail@(item.RegistrationID)">@item.ParticipantEmail</label>
+                <input type="text" name="ParticipantEmail" id="txtParticipantEmail@(item.RegistrationID)" value="@item.ParticipantEmail" class="invisible">
+            </td>
+            <td>
+                <label id="lblRegistrationDate@(item.RegistrationID)">@item.RegistrationDate</label>
+            </td>
+            <td>
+                @{
+                    var editId = "btnEdit" + item.RegistrationID;
+                    var saveId = "tntSave" + item.RegistrationID;
+                    
+                }
+                <button type="button" id="@editId" data-index="@(item.RegistrationID)" class="btnEdit">Edit</button>
+                <button id="@saveId" type="submit" data-index="@(item.RegistrationID)" class="btnSave">Save</button>
+                |
+                @Html.ActionLink("Delete", "Delete", "Registrations", new { registrationID = item.RegistrationID, eventID = item.EventID, eventName = item.EventName })
+            </td>
+        </tr>
+    }
+
+}
+
+            @* add a new participant *@
+    @using (Html.BeginForm("AddANewParticipant", "Registrations", FormMethod.Post, new { id = "FormAddANewParticipant" }))
+    {
+        <tr>
+        <td>New participant</td>
+        <td>
+            @if (TempData.ContainsKey("EventID"))
+            {
+                <input type="hidden" name="eventID" value="@TempData["EventID"]">
+            }
+            <input type="text" name="newParticipantName" id="txtNewParticipantName">
+        </td>
+        <td>
+            <input type="text" name="newParticipantEmail" id="txtNewParticipantEmail">
+        </td>
+        <td>
+        </td>
+        <td>
+            <button id="btnAddANewParticipant" type="submit">Add</button>
+        </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+@if (TempData.ContainsKey("isUpdateSuccessful") && (bool)TempData["isUpdateSuccessful"])
+{
+    <script>
+        alert('Updated successfully!');
+    </script>
+}
+
+
