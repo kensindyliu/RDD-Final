@@ -1,0 +1,13 @@
+﻿one this very tricky is about the setting of MapControllerRoute
+
+controller 接收ajax的参数时，asp.net 8.0 MVC会在启动启动程序program.cs里有一段代码：
+app.MapControllerRoute(
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id222?}");
+public ActionResult DeleteAProduct(int id222) //Controller参数名称必须为id222
+那么controller里接收的参数名称必须为id222d，而不能为其它值，如果使用默认路由
+app.MapDefaultControllerRoute();，那么值必须为id.比如：
+public ActionResult DeleteAProduct(int id)
+
+如果Program.cs没有这段代码则跑不起来。其它版本MVC和AJAX配合也有类似设置。
+更多内容参考搜索关键字： ASP.NET MVC 路由概述   或 在 ASP.NET Core 中路由到控制器操作
